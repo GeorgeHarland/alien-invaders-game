@@ -250,7 +250,10 @@ class AlienInvaders:
         self.scoredisplay.prep_level_count()
 
         # Spawn a powerup at specific levels
-        self._create_powerup()
+        if self.stats.level == 3:
+            self._create_powerup()
+        elif self.stats.level == 6:
+            self._create_powerup()
 
     def _check_powerup_collisions(self):
         '''Look for powerup-ship collisions'''
@@ -264,8 +267,10 @@ class AlienInvaders:
         '''Upgrade stats based on what power level has been reached'''
         if self.settings.powerup_level == 1:
             self.settings.bullet_width = 6
+            self.settings.bullet_color = (8,181,255)
         if self.settings.powerup_level == 2:
-            self.settings.bullet_width = 20
+            self.settings.bullet_width = 12
+            self.settings.bullet_color = (255,255,0)
 
 
     def _check_fleet_edges(self):
